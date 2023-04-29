@@ -51,23 +51,23 @@ function App() {
         <Route exact path="/">
           <MainDash />
         </Route>
-        <Route path="/login">
+        <Route exact path="/login">
           <Login />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route path="/activate">
+        <Route exact path="/activate">
           <AccountActivation />
         </Route>
-        <Route path="/forgot">
+        <Route exact path="/forgot">
           <Forgot />
         </Route>
-        <Route path="/resetpassword">
+        <Route exact path="/resetpassword">
           <ResetPassword />
         </Route>
 
-        <Route path="**">
+        <Route exact path="**">
           <Nopage />
         </Route>
       </Switch>
