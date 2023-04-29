@@ -1,12 +1,32 @@
 import { Box, Button, CircularProgress, TextField } from '@mui/material'
 import { useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import {decodeToken} from 'react-jwt'
 
 const Signup = () => {
   const history = useHistory()
   const [message, setMessage] = useState()
   const [click, setClick] = useState(false)
+
+  useEffect(()=>{
+    const getUrls = async() => {
+ 
+     // getting token from header
+     const token = localStorage.getItem("usertoken")
+ 
+     // validating the header token
+     const user = decodeToken(token)
+   
+     if(user) { 
+       history.replace("/")
+     }
+     
+    }
+ 
+    getUrls()
+    
+   },[])
 
   // validates through formik
   const { handleSubmit, handleBlur, handleChange, values } = useFormik(
@@ -40,7 +60,7 @@ try {
   const data = await response.json()
 setClick(false)
   if(!data.message){
-    setMessage("An account activation link has been sent to your email")
+    setMessage("Successfully Signuped and an account activation link has been sent to your email")
   }else{
     setMessage(data.message)
   }
@@ -113,9 +133,11 @@ setClick(false)
                     }
                 </Button>
 
+               <div className="links">
                <a href="/login" style={{textAlign:"center"}}>Already have an account</a>
+               <a href="/activate" style={{textAlign:"center"}}>Activate your account</a>
 
-
+               </div>
 
             </form>
         </div>

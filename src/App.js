@@ -4,46 +4,48 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import { decodeToken } from 'react-jwt';
 import Login from './Components/UserEntry/Login';
 import Signup from './Components/UserEntry/Signup';
-import Forgot from './Components/UserEntry/Forgot';
+import Forgot from './Components/UserEntry/Forgot/Forgot';
 import MainDash from './Components/DashBoard/MainDash/MainDash';
+import AccountActivation from './Components/UserEntry/AccountActivation';
+import ResetPassword from './Components/UserEntry/Forgot/ResetPassword';
 
 function App() {
  
 
   const history = useHistory()
-  useEffect(()=>{
-   const getUrls = async() => {
+//   useEffect(()=>{
+//    const getUrls = async() => {
 
-    // getting token from header
-    const token = localStorage.getItem("usertoken")
+//     // getting token from header
+//     const token = localStorage.getItem("usertoken")
 
-    // validating the header token
-    const user = decodeToken(token)
+//     // validating the header token
+//     const user = decodeToken(token)
   
-    if(user) { 
-      history.replace("/")
-    }
+//     if(user) { 
+//       history.replace("/")
+//     }
     
 
-// // getting the urls
-//     try {
-//       const response = await fetch(`https://url-shortner-backend-itr5.onrender.com/shorturl/all/${user.id}`,{
-//         method:"GET",
-//         headers:{
-//           "user-login-token":localStorage.getItem("usertoken")
-//         }
-//       })
-//      const data = await response.json()
-//      console.log(data)
+// // // getting the urls
+// //     try {
+// //       const response = await fetch(`https://url-shortner-backend-itr5.onrender.com/shorturl/all/${user.id}`,{
+// //         method:"GET",
+// //         headers:{
+// //           "user-login-token":localStorage.getItem("usertoken")
+// //         }
+// //       })
+// //      const data = await response.json()
+// //      console.log(data)
 
-//     } catch (error) {
-//      console.log("All Url Error",error)
-//     }
-   }
+// //     } catch (error) {
+// //      console.log("All Url Error",error)
+// //     }
+//    }
 
-   getUrls()
+//    getUrls()
    
-  },[])
+//   },[])
 
   return (
     <div className="App">
@@ -54,8 +56,14 @@ function App() {
         <Route path="/signup">
           <Signup/>
         </Route>
+        <Route path="/activate">
+          <AccountActivation/>
+        </Route>
         <Route path="/forgot">
           <Forgot/>
+        </Route>
+        <Route path="/resetpassword">
+          <ResetPassword/>
         </Route>
         <Route exact path="/">
           <MainDash/>

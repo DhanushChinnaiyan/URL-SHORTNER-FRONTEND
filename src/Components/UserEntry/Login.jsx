@@ -1,13 +1,33 @@
 import { Box, Button, CircularProgress, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './UserEntry.css'
 import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
+import { decodeToken } from 'react-jwt';
 
 const Login = () => {
     const history = useHistory()
     const [message, setMessage] = useState()
     const [click, setClick] = useState(false)
+
+    useEffect(()=>{
+        const getUrls = async() => {
+     
+         // getting token from header
+         const token = localStorage.getItem("usertoken")
+     
+         // validating the header token
+         const user = decodeToken(token)
+       
+         if(user) { 
+           history.replace("/")
+         }
+         
+        }
+     
+        getUrls()
+        
+       },[])
 
     // validates through formik
     const { handleSubmit, handleBlur, handleChange, values } = useFormik(
@@ -95,9 +115,11 @@ const Login = () => {
                     }
                 </Button>
 
-               <a href="/signup" style={{textAlign:"center"}}>Create new account</a>
-
-
+               <div className="links">
+               <a href="/signup" >Create new account</a>
+               <a href="/activate" >Activate your account</a>
+               <a href="/forgot" >Forgot your password</a>
+               </div>
 
             </form>
         </div>
