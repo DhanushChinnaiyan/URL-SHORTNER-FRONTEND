@@ -74,7 +74,7 @@ const Login = () => {
     }
 
     return (
-         <div className="formdiv">
+         <div className="formdiv userEntryDiv">
             
             <form className='form' onSubmit={handleSubmit}>
             <div className="tittle">LOGIN</div>

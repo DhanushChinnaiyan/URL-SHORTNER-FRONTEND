@@ -7,7 +7,7 @@ import { Route, Switch, useHistory, useParams } from 'react-router-dom'
 const AccountActivation = () => {
 
     return (
-        <div>
+        <div className='userEntryDiv'>
 
             <Switch>
                 <Route exact path='/activate'>

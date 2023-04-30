@@ -71,7 +71,7 @@ setClick(false)
 }
 
   return (
-         <div className="formdiv">
+         <div className="formdiv userEntryDiv">
             
             <form className='form' onSubmit={handleSubmit}>
             <div className="tittle">SIGNUP</div>

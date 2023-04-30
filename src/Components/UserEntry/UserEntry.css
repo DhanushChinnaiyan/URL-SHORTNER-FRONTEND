@@ -61,3 +61,7 @@ a:hover {
     justify-content: center;
    padding-top: 20vh;
 }
+
+.userEntryDiv{
+    background-color: rgb(32, 101, 2);
+}

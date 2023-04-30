@@ -7,7 +7,7 @@ import {decodeToken} from 'react-jwt'
 const Forgot = () => {
 
   return (
-    <div>
+    <div className='userEntryDiv'>
       <Switch>
         <Route exact path='/forgot'>
           <ForgotEmailSending />
